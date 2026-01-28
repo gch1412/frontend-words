@@ -9,7 +9,7 @@ const LandPage = () => {
     <>
       <Carousel className="h-50">
         <Carousel.Item>
-          <img src="../../images/hello.jpg" className="d-block w-100" />
+          <img src="../images/hello.jpg" className="d-block w-100" />
           <Carousel.Caption className="top-50 translate-middle-y d-flex flex-column align-items-center">
             <div className="d-flex flex-column align-items-center mb-5">
               <Link to="/login" className="btn btn-primary px-4 py-2 fs-5 mb-5 custom-button" role="button">Entrar</Link>
@@ -23,7 +23,7 @@ const LandPage = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src="../../images/expanda.jpg" className="d-block w-100" />
+          <img src="../images/expanda.jpg" className="d-block w-100" />
           <Carousel.Caption className="top-50 translate-middle-y d-flex flex-column align-items-center">
             <div className="d-flex flex-column align-items-center mb-5">
               <Link to="/login" className="btn btn-primary px-4 py-2 fs-5 mb-5 custom-button" role="button">Entrar</Link>
@@ -37,7 +37,7 @@ const LandPage = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src="../../images/profissional.jpg" className="d-block w-100" />
+          <img src="../images/profissional.jpg" className="d-block w-100" />
           <Carousel.Caption className="top-50 translate-middle-y d-flex flex-column align-items-center">
             <div className="d-flex flex-column align-items-center mb-5">
               <Link to="/login" className="btn btn-primary px-4 py-2 fs-5 mb-5 custom-button" role="button">Entrar</Link>
