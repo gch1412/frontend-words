@@ -1,39 +1,53 @@
 import { useLocation } from "react-router-dom"
-import { Container } from "react-bootstrap"
-import { faHouse, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import { Button, Container } from "react-bootstrap"
+import { faHouse, faArrowLeft, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
+import { useLogoutMutation } from "../features/auth/authApiSlice"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Header = () => {
 
-    const location = useLocation()
-    
-    let title
-    let subtitle
+  const location = useLocation()
+  const navigate = useNavigate()
 
-    switch (location.pathname) {
-        case '/home':
-            title = 'Free English Course'
-            subtitle = 'Curso de inglês grátis'
-            break
-        case '/words':
-            title = 'Word Lists'
-            subtitle = 'Listas de palavras'
-            break
-        case '/add_word':
-            title = 'Add New Word'
-            subtitle = 'Adicionar nova palavra'
-            break
-        case '/save':
-            title = 'Save'
-            subtitle = 'Salvar'
-            break
-        default:
-            title = ''
-            subtitle = ''
-    }
+  let title
+  let subtitle
 
-    return (
+  const [ logout, {
+    isLoading,
+    isSuccess,
+    isError, error
+  } ] = useLogoutMutation()
+
+  switch (location.pathname) {
+    case '/home':
+      title = 'Free English Course'
+      subtitle = 'Curso de inglês grátis'
+      break
+    case '/words':
+      title = 'Word Lists'
+      subtitle = 'Listas de palavras'
+      break
+    case '/add_word':
+      title = 'Add New Word'
+      subtitle = 'Adicionar nova palavra'
+      break
+    case '/save':
+      title = 'Save'
+      subtitle = 'Salvar'
+      break
+    default:
+      title = ''
+      subtitle = ''
+  }
+
+  useEffect(() => {
+    if(isSuccess) navigate({pathname: '/', replace: true})
+  }, [isSuccess, navigate])
+
+  return (
     <header className="vh-20 d-flex align-items-center">
       <Container className="d-flex align-items-center justify-content-between">
 
@@ -55,6 +69,11 @@ const Header = () => {
             <Link to="/home">
               <FontAwesomeIcon icon={faHouse} className="fs-1 p-1" />
             </Link>
+          )}
+          {location.pathname == "/home" && (
+            <Button onClick={logout}>
+              <FontAwesomeIcon icon={faRightFromBracket} />
+            </Button>
           )}
         </div>
 
