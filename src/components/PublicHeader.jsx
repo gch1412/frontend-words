@@ -23,14 +23,14 @@ const PublicHeader = () => {
       {
         (location.pathname === '/login') && <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/signup">Não possui conta? Cadastre-se</Nav.Link>
+            <Nav.Link href="#signup">Não possui conta? Cadastre-se</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       }
       {
         (location.pathname === '/signup') && <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/login">Já possui cadastro?</Nav.Link>
+            <Nav.Link href="#login">Já possui cadastro?</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       }
