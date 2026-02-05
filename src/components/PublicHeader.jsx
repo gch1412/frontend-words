@@ -8,7 +8,7 @@ const PublicHeader = () => {
 
   return (
     <Navbar expand="sm" className="w-100 vh-10 d-flex justify-content-around">
-    <Navbar.Brand href="/" className='mx-3 fs-1'>LangApp</Navbar.Brand>
+    <Navbar.Brand href="#" className='mx-3 fs-1'>LangApp</Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
