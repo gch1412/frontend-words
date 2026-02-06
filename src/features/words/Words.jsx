@@ -5,8 +5,6 @@ import { useSelector } from "react-redux"
 import { makeWordsSelectors } from "./wordsApiSlice"
 import { useLocation, useParams } from "react-router-dom"
 import { Container } from "react-bootstrap"
-import Error from '../../components/Error'
-import Loading from '../../components/Loading'
 
 const Words = () => {
     const { category } = useParams()
@@ -29,10 +27,10 @@ const Words = () => {
     let content
 
     if (isLoading) {
-        content = <Loading />
+        content = <p>Loading...</p>
 
     } else if (isError) {
-        content = <Error error={error} />
+        content = <p>{error.code} - {error.message}</p>
     } else if (isSuccess) {
         const wordsQueue = new WordsQueue(ids)
         content =
@@ -41,13 +39,7 @@ const Words = () => {
             </>
     }
 
-    return (
-        <Container fluid>
-            <div className="d-flex justify-content-center vh-100">
-                {content}
-            </div >
-        </Container >
-    )
+    return content
 }
 
 export default Words

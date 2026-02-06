@@ -3,19 +3,18 @@ import Header from "./Header"
 import Footer from "./Footer"
 
 
+
 const Layout = () => {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <Header />
 
-      <main className="w-100">
-        <div className="w-100 d-flex justify-content-center mb-5">
-          
-          <Outlet />
-        </div>
+      <main className="flex-grow-1 d-flex justify-content-center">
+        <Outlet />
       </main>
+
       <Footer />
-    </>
+    </div>
   )
 }
 

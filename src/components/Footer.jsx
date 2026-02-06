@@ -2,12 +2,13 @@ import { Container } from "react-bootstrap"
 
 const Footer = () => {
   return (
-    <footer className="vh-30 d-flex align-items-center">
-      <Container className="text-center text-white">
+    <footer className="bg-dark text-white">
+      <div className="container text-center py-4">
         Footer
-      </Container>
+      </div>
     </footer>
   )
 }
+
 
 export default Footer

@@ -118,128 +118,133 @@ const EditWord = () => {
   }
 
   return (
-    <Container>
-      <p>{isError && error.data?.message}</p>
-      {isSuccess && <p>Word updated!</p>}
+    <Container className="d-flex justify-content-center">
+      <div className="w-100" style={{ maxWidth: "720px" }}>
 
-      <Form
-        id="form"
-        className="min-vh-100 w-100 d-flex flex-column align-items-center justify-content-evenly p-2"
-        onSubmit={handleWordUpdate}
-      >
+        <p className="text-danger">{isError && error.data?.message}</p>
+        {isSuccess && <p className="text-success">Word updated!</p>}
 
-        <Form.Group className="w-75 d-flex flex-column my-3">
-          <Form.Label htmlFor="wordInput" className="fs-3">
-            Word
-          </Form.Label>
-          <Form.Control
-            id="wordInput"
-            className="w-100 border-2 border-black fs-4"
-            value={updatedWord}
-            onChange={(e) => setUpdatedWord(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group className="w-75 d-flex flex-column my-3">
-          <Form.Label htmlFor="categorySelect" className="fs-3">
-            Word Class
-          </Form.Label>
-          <Form.Select
-            id="categorySelect"
-            className="w-100 border-2 border-black fs-4"
-            value={capitalizeFirstLetter(wordClass)}
-            onChange={(e) => setWordClass(e.target.value)}
-          >
-            <option value="">---</option>
-            <option value="Noun">Noun</option>
-            <option value="Article">Article</option>
-            <option value="Numeral">Numeral</option>
-            <option value="Pronoun">Pronoun</option>
-            <option value="Adjective">Adjective</option>
-            <option value="Adverb">Adverb</option>
-            <option value="Verb">Verb</option>
-            <option value="Preposition">Preposition</option>
-            <option value="Conjunction">Conjunction</option>
-            <option value="Interjection">Interjection</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group className="w-75 d-flex flex-column my-3">
-          {updateTranslations.map((transl, index) => (
-            <React.Fragment key={index}>
-              <Form.Label
-                htmlFor={`inputTranslation_${index + 1}`}
-                className="fs-3"
-              >
-                Translation {index + 1}
-              </Form.Label>
-              <Form.Control
-                id={`inputTranslation_${index + 1}`}
-                className="w-100 border-2 border-black fs-4"
-                value={transl}
-                onChange={(e) =>
-                  handleTranslationChange(index, e.target.value)
-                }
-                style={
-                  isLastTranslation(index + 1)
-                    ? { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }
-                    : {}
-                }
-                placeholder={`Translation ${index + 1}`}
-              />
-            </React.Fragment>
-          ))}
-
-          {!translationLength(2) && canAddNewTranslation && (
-            <Button
-              id="btnAddTranslation"
-              type="button"
-              className="fs-6"
-              style={
-                translationLength(1)
-                  ? { ...style.translationInput, borderRadius: 0 }
-                  : {
-                    ...style.translationInput,
-                    borderTopLeftRadius: 0,
-                    borderTopRightRadius: 0,
-                  }
-              }
-              onClick={handleAddTranslation}
-            >
-              <FontAwesomeIcon icon={faPlusCircle} /> Add new translation
-            </Button>
-          )}
-
-          {translationLength(1) && (
-            <Button
-              id="btnRemoveTranslation"
-              type="button"
-              className="fs-6"
-              style={{
-                color: "rgb(255, 32, 32)",
-                backgroundColor: "white",
-                border: "2px solid rgb(255, 32, 32)",
-                borderTop: 0,
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
-              }}
-              onClick={handleRemoveTranslation}
-            >
-              <FontAwesomeIcon icon={faMinusCircle} /> Remove translation
-            </Button>
-          )}
-        </Form.Group>
-
-        <Button
-          id="btnUpdateWord"
-          type="submit"
-          className="w-75 mt-3 mb-3 fs-3"
-          style={{ backgroundColor: "rgb(32,32,64)", border: 0 }}
-          disabled={!canSave}
+        <Form
+          id="form"
+          className="w-100 d-flex flex-column align-items-center p-2"
+          onSubmit={handleWordUpdate}
         >
-          Update word
-        </Button>
-      </Form>
+
+          <Form.Group className="w-100 d-flex flex-column my-3">
+            <Form.Label htmlFor="wordInput" className="fs-3">
+              Word
+            </Form.Label>
+            <Form.Control
+              id="wordInput"
+              className="border-2 border-black fs-4"
+              value={updatedWord}
+              onChange={(e) => setUpdatedWord(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="w-100 d-flex flex-column my-3">
+            <Form.Label htmlFor="categorySelect" className="fs-3">
+              Word Class
+            </Form.Label>
+            <Form.Select
+              id="categorySelect"
+              className="border-2 border-black fs-4"
+              value={capitalizeFirstLetter(wordClass)}
+              onChange={(e) => setWordClass(e.target.value)}
+            >
+              <option value="">---</option>
+              <option value="Noun">Noun</option>
+              <option value="Article">Article</option>
+              <option value="Numeral">Numeral</option>
+              <option value="Pronoun">Pronoun</option>
+              <option value="Adjective">Adjective</option>
+              <option value="Adverb">Adverb</option>
+              <option value="Verb">Verb</option>
+              <option value="Preposition">Preposition</option>
+              <option value="Conjunction">Conjunction</option>
+              <option value="Interjection">Interjection</option>
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="w-100 d-flex flex-column my-3">
+            {updateTranslations.map((transl, index) => (
+              <div key={index} className="d-flex flex-column">
+                <Form.Label
+                  htmlFor={`inputTranslation_${index + 1}`}
+                  className="fs-3"
+                >
+                  Translation {index + 1}
+                </Form.Label>
+
+                <Form.Control
+                  id={`inputTranslation_${index + 1}`}
+                  className="border-2 border-black fs-4"
+                  value={transl}
+                  onChange={(e) =>
+                    handleTranslationChange(index, e.target.value)
+                  }
+                  placeholder={`Translation ${index + 1}`}
+                  style={
+                    isLastTranslation(index + 1)
+                      ? { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }
+                      : {}
+                  }
+                />
+              </div>
+            ))}
+
+            {!translationLength(2) && canAddNewTranslation && (
+              <Button
+                id="btnAddTranslation"
+                type="button"
+                className="fs-6"
+                style={
+                  translationLength(1)
+                    ? { ...style.translationInput, borderRadius: 0 }
+                    : {
+                      ...style.translationInput,
+                      borderTopLeftRadius: 0,
+                      borderTopRightRadius: 0,
+                    }
+                }
+                onClick={handleAddTranslation}
+              >
+                <FontAwesomeIcon icon={faPlusCircle} /> Add new translation
+              </Button>
+            )}
+
+            {translationLength(1) && (
+              <Button
+                id="btnRemoveTranslation"
+                type="button"
+                className="fs-6"
+                style={{
+                  color: "rgb(255, 32, 32)",
+                  backgroundColor: "white",
+                  border: "2px solid rgb(255, 32, 32)",
+                  borderTop: 0,
+                  borderTopLeftRadius: 0,
+                  borderTopRightRadius: 0,
+                }}
+                onClick={handleRemoveTranslation}
+              >
+                <FontAwesomeIcon icon={faMinusCircle} /> Remove translation
+              </Button>
+            )}
+          </Form.Group>
+
+          <Button
+            id="btnUpdateWord"
+            type="submit"
+            className="w-100 mt-3 mb-3 fs-3"
+            style={{ backgroundColor: "rgb(32,32,64)", border: 0 }}
+            disabled={!canSave}
+          >
+            Update word
+          </Button>
+
+        </Form>
+      </div>
     </Container>
   )
 }

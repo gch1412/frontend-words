@@ -15,11 +15,11 @@ const Header = () => {
   let title
   let subtitle
 
-  const [ logout, {
+  const [logout, {
     isLoading,
     isSuccess,
     isError, error
-  } ] = useLogoutMutation()
+  }] = useLogoutMutation()
 
   switch (location.pathname) {
     case '/home':
@@ -44,12 +44,12 @@ const Header = () => {
   }
 
   useEffect(() => {
-    if(isSuccess) navigate({pathname: '/', replace: true})
+    if (isSuccess) navigate({ pathname: '/', replace: true })
   }, [isSuccess, navigate])
 
   return (
-    <header className="vh-20 d-flex align-items-center">
-      <Container className="d-flex align-items-center justify-content-between">
+    <header className="border-bottom">
+      <div className="container d-flex align-items-center justify-content-between py-3">
 
         <div>
           {location.state?.from && (
@@ -77,7 +77,7 @@ const Header = () => {
           )}
         </div>
 
-      </Container>
+      </div>
     </header>
   )
 }
