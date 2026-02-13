@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    //baseUrl: 'https://backend-words-pc6d.vercel.app/',
-    baseUrl: 'http://localhost:3500',
+    baseUrl: 'https://backend-words-pc6d.vercel.app/',
+    //baseUrl: 'http://localhost:3500',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
@@ -18,11 +18,9 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReath = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions)
-    console.log(result)
 
     if(result?.error?.status === 403){
         const refreshResult = await baseQuery('/auth/refresh', api, extraOptions)
-        console.log(refreshResult)
 
         if(refreshResult?.data){
             api.dispatch(setCredentials({...refreshResult.data}))

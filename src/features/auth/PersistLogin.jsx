@@ -3,9 +3,11 @@ import { selectCurrentToken } from "./authSlice"
 import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { useRefreshMutation } from "./authApiSlice"
+import { useNavigate } from "react-router-dom"
 import usePersist from "../../hooks/usePersist"
 
 const PersistLogin = () => {
+    const navigate = useNavigate()
 
     const [persist] = usePersist()
     const token = useSelector(selectCurrentToken)
@@ -39,6 +41,12 @@ const PersistLogin = () => {
 
     }, [])
 
+    useEffect(() => {
+        if(isError){
+            navigate({pathname: '/', replace: true})
+        }
+    }, [isError, navigate])
+
     let content
 
     if (!persist) {
@@ -46,7 +54,6 @@ const PersistLogin = () => {
     } else if (isLoading) {
         content = <p>Loading...</p>
     } else if (isError) {
-        console.log('error')
         content = <p>
             {error.data?.message}
             <Link to="/login">Please, login again</Link>

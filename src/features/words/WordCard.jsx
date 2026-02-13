@@ -45,25 +45,25 @@ const WordCard = ({ id, handlePreviousClicked, handleNextClicked, handleShowWord
 
   return (
 
-    <Container fluid >
-      <div className="d-flex justify-content-center h-100">
-        <Card className="w-100 d-flex align-items-center justify-content-around flex-row border mb-5">
+    <Container className="py-4">
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "calc(100vh - 64px)" }}>
+        <Card className="w-100 d-flex align-items-center justify-content-around flex-row border mb-5" style={{minHeight: "500px", maxWidth: "500px"}}>
           <Button onClick={onPreviousClicked} disabled={!canClickPrevious}>
             <FontAwesomeIcon icon={faArrowLeft} />
           </Button>
-          <Card.Body className="h-100 w-50 d-flex flex-column align-items-center justify-content-evenly">
-            <div className="h-25">
+          <Card.Body className="d-flex flex-column align-items-center gap-3 text-center">
+            <div>
               <p className="fs-1 my-0">{word.word}</p>
               <p className="fs-6 my-0">{word.wordClass}</p>
             </div>
-            <div className="fs-4 d-flex flex-column align-items-center justify-content-around h-50">
-              {showTranslation ? (
-                wordContent
-              ) : (
+
+            <div className="d-flex flex-column align-items-center gap-4 fs-4">
+              {showTranslation ? wordContent : (
                 <Button onClick={() => setShowTranslation(true)}>
                   Mostrar tradução
                 </Button>
               )}
+
               <Button onClick={handleShowWordsList}>
                 Ver todos
               </Button>

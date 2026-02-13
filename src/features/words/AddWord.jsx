@@ -63,7 +63,7 @@ const AddWord = () => {
     e.preventDefault()
 
     const addedWord = { word, wordClass: wordClass.toLowerCase(), category: setWordCategory(wordClass), translations }
-    console.log(addedWord)
+
 
     if (!addedWord.word || !addedWord.wordClass || !addedWord.translations) {
       return new Error('All fields and required!')
@@ -90,7 +90,7 @@ const AddWord = () => {
 
   return (
     <Container className="d-flex justify-content-center align-items-start py-4">
-      <div className="w-100" style={{ maxWidth: "700px" }}>
+      <div className="w-100" style={{ maxWidth: "720px"}}>
 
         {isError && <p className="text-danger">{error.data?.message}</p>}
         {isSuccess && <p className="text-success">Word added!</p>}

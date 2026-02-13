@@ -15,7 +15,9 @@ const SignUp = () => {
   const [createUser, { isSuccess, isLoading, isError, error }] = useCreateUserMutation()
 
   useEffect(() => {
-    if (isSuccess) navigate({pathname: '/home', replace: true})
+    if (isSuccess) {
+      navigate({ pathname: '/home', replace: true })
+    }
   }, [isSuccess, navigate])
 
   const canSave = [username, password].every(Boolean)

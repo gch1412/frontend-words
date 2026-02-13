@@ -94,8 +94,6 @@ const EditWord = () => {
 
     const newWordUpdated = { id: id, word: updatedWord, previousCategory, wordClass: wordClass.toLowerCase(), nextCategory, translations: updateTranslations, custom: custom }
 
-    console.log(newWordUpdated)
-
     if (!newWordUpdated.word || !newWordUpdated.wordClass || !newWordUpdated.previousCategory || !newWordUpdated.nextCategory || !newWordUpdated.translations) {
       return new Error('All fields and required!')
     }

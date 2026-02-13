@@ -135,6 +135,10 @@ form {
   min-height: 50vh;
 }
 
+.min-h-100 {
+  min-height: 100%;
+}
+
 img {
   height: 560px;
   object-position: top;
