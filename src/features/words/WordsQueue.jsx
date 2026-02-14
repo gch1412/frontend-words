@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import WordCard from './WordCard'
 import WordsList from './WordsList'
 import { useLocation } from 'react-router-dom'

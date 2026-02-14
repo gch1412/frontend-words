@@ -4,7 +4,6 @@ import WordsQueue from "../../utils/classes/WordsQueue"
 import { useSelector } from "react-redux"
 import { makeWordsSelectors } from "./wordsApiSlice"
 import { useLocation, useParams } from "react-router-dom"
-import { Container } from "react-bootstrap"
 
 const Words = () => {
     const { category } = useParams()
